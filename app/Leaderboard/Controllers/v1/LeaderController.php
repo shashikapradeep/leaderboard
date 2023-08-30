@@ -20,18 +20,16 @@ class LeaderController extends BaseController
 
     public function search(): JsonResponse
     {
-        return response(["hello" => "world"])->json();
+        return $this->response(["hello" => "world"]);
     }
 
     public function getAll():JsonResponse
     {
-
         return response()->json();
     }
 
     public function getOne():JsonResponse
     {
-
         return response()->json();
     }
 
