@@ -1,15 +1,14 @@
 <?php
+namespace Leaderboard\Controllers;
 
-namespace App\Leaderboard\Controllers\v1;
-
-use App\Leaderboard\Traits\HttpResponse;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Routing\Controller;
+use Leaderboard\Traits\HttpResponse;
 
-class Controller extends BaseController
+class BaseController extends Controller
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, HttpResponse;
 

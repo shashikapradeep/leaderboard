@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Leaderboard\Services\Leader;
+namespace Leaderboard\Services\Leader;
 
 interface LeaderServiceInterface
 {

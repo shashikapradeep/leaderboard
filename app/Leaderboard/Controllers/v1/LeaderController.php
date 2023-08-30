@@ -1,12 +1,12 @@
 <?php
 
-namespace App\LeaderBoard\Controller\v1;
+namespace LeaderBoard\Controller\v1;
 
-use App\Leaderboard\Services\Leader\LeaderService;
-use Controller;
+use Leaderboard\Controllers\BaseController;
+use Leaderboard\Services\Leader\LeaderService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class LeaderController extends Controller
+class LeaderController extends BaseController
 {
     protected LeaderService $leaderService;
 

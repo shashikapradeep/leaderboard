@@ -1,10 +1,8 @@
 <?php
 
+namespace Leaderboard\Services\Leader;
 
-namespace App\Leaderboard\Services\Leader;
-
-
-use App\Leaderboard\Repositories\Leader\LeaderRepository;
+use Leaderboard\Repositories\Leader\LeaderRepository;
 
 class LeaderService
 {

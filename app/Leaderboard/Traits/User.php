@@ -1,6 +1,8 @@
 <?php
 
-namespace CareHero\Traits;
+namespace Leaderboard\Traits;
+
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Trait User
@@ -11,7 +13,7 @@ trait User
     /**
      * @return mixed
      */
-    public function getUser()
+    public function getUser():Model
     {
         return Auth()->user()->first();
     }
@@ -19,7 +21,7 @@ trait User
     /**
      * @return mixed
      */
-    public function getUserRole()
+    public function getUserRole():Model
     {
         return $this->getUser()->role->first();
     }
@@ -27,7 +29,7 @@ trait User
     /**
      * @return mixed
      */
-    public function getUserRoleName()
+    public function getUserRoleName():string
     {
         return $this->getUserRole()->role;
     }
@@ -35,7 +37,7 @@ trait User
     /**
      * @return mixed
      */
-    public function getUserRoleId()
+    public function getUserRoleId():int
     {
         return Auth()->user()->logged_role()->role_id;
     }

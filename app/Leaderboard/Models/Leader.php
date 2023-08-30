@@ -1,10 +1,7 @@
 <?php
+namespace Leaderboard\Model;
 
-
-namespace App\Leaderboard\Models;
-
-
-class Leaders extends Model
+class Leader extends Model
 {
     protected $fillable = [
         "name",

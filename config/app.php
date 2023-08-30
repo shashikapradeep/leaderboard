@@ -170,9 +170,6 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Leaderboard\Providers\LeaderboardServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
-        Kreait\Laravel\Firebase\ServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
     ])->toArray(),
 
     /*

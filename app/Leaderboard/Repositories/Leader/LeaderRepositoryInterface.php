@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Leaderboard\Repositories\Leader;
+namespace Leaderboard\Repositories\Leader;
 
 
 use App\Leaderboard\Repositories\BaseEloquentRepository;

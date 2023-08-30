@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Leaderboard\Repositories;
+namespace Leaderboard\Repositories;
 
 use CareHero\Traits\User;
 use Illuminate\Database\Eloquent\Collection;
