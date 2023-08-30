@@ -1,6 +1,6 @@
 <?php
 
-namespace LeaderBoard\Controller\v1;
+namespace Leaderboard\Controller\v1;
 
 use Leaderboard\Controllers\BaseController;
 use Leaderboard\Services\Leader\LeaderService;
@@ -15,7 +15,7 @@ class LeaderController extends BaseController
      */
     public function __construct(LeaderService $leaderService)
     {
-        $this->$leaderService = $leaderService;
+        $this->leaderService = $leaderService;
     }
 
     public function search(): JsonResponse

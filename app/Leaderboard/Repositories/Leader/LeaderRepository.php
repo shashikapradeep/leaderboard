@@ -1,6 +1,7 @@
 <?php
 namespace Leaderboard\Repositories\Leader;
 
+use Leaderboard\Models\Leader;
 use Leaderboard\Repositories\BaseEloquentRepository;
 
 class LeaderRepository extends BaseEloquentRepository implements LeaderRepositoryInterface

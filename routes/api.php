@@ -18,7 +18,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::group(['namespace' => 'App\Leaderboard\Controllers\v1', 'prefix' => 'v1'], function () {
-    Route::get('leader/search', ['uses' => 'LeaderController@search'])->name('search.request.leader');
-});
+Route::group(['namespace' => 'v1', 'prefix' => 'v1',
+    'middleware' => []],
+    function () {
+        Route::get('/leader/search', [Leaderboard\Controller\v1\LeaderController::class, 'search']);
+    }
+);
