@@ -26,7 +26,7 @@ class LeaderController extends BaseController
 
     public function search(Request $searchRequest): JsonResponse
     {
-        return $this->response($this->leaderService->search('', '')->toArray());
+        return $this->response($this->leaderService->search($searchRequest->get('text'), $searchRequest->get('column'))->toArray());
     }
 
     public function all(Request $getAllRequest):JsonResponse
@@ -36,7 +36,8 @@ class LeaderController extends BaseController
 
     public function one(Request $getOneRequest):JsonResponse
     {
-        return $this->response($getOneRequest->get('id')->toArray());
+        return $this->response(["hello" => "world"]);
+//        return $this->response($getOneRequest->get('id')->toArray());
     }
 
     public function update(Request $updateRequest, int $id):JsonResponse

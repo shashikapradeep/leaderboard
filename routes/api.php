@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Leaderboard\Controller\v1\LeaderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['namespace' => 'v1', 'prefix' => 'v1',
-    'middleware' => []],
-    function () {
-        Route::get('/leader/search', [Leaderboard\Controller\v1\LeaderController::class, 'search']);
-    }
-);
+Route::group(['namespace' => 'v1', 'prefix' => 'v1', 'middleware' => []], function () {
+    Route::post('/leader/store', [LeaderController::class, 'store']);
+    Route::put('/leader/update', [LeaderController::class, 'update']);
+    Route::get('/leader/:id', [LeaderController::class, 'one']);
+    Route::get('/leader/all', [LeaderController::class, 'all']);
+    Route::delete('/leader/delete', [LeaderController::class, 'delete']);
+    Route::get('/leader/search/:', [LeaderController::class, 'search']);
+});

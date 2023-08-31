@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace Leaderboard\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Leaderboard\Models\AbstractModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends AbstractModel
