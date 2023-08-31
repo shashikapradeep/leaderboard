@@ -2,6 +2,7 @@
 
 namespace Leaderboard\Controller\v1;
 
+use Illuminate\Http\Request;
 use Leaderboard\Controllers\BaseController;
 use Leaderboard\Services\Leader\LeaderService;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -18,28 +19,33 @@ class LeaderController extends BaseController
         $this->leaderService = $leaderService;
     }
 
-    public function search(): JsonResponse
+    public function store(Request $leaderData): JsonResponse
     {
-        return $this->response(["hello" => "world"]);
+        return $this->response($this->leaderService->store($leaderData->all())->toArray());
     }
 
-    public function getAll():JsonResponse
+    public function search(Request $searchRequest): JsonResponse
     {
-        return response()->json();
+        return $this->response($this->leaderService->search('', '')->toArray());
     }
 
-    public function getOne():JsonResponse
+    public function all(Request $getAllRequest):JsonResponse
     {
-        return response()->json();
+        return $this->response($this->leaderService->all($getAllRequest->get('orderBy'), $getAllRequest->get('sortBy'))->toArray());
     }
 
-    public function update():JsonResponse
+    public function one(Request $getOneRequest):JsonResponse
     {
-        return response()->json();
+        return $this->response($getOneRequest->get('id')->toArray());
+    }
+
+    public function update(Request $updateRequest, int $id):JsonResponse
+    {
+        return $this->response($this->leaderService->update($updateRequest->all(), $id));
     }
 
     public function delete():JsonResponse
     {
-        return response()->json();
+        return $this->response();
     }
 }

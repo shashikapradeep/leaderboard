@@ -34,7 +34,7 @@ abstract class BaseEloquentRepository
      * @param string $sort sort direction
      * @return Collection
      */
-    public function getAll(string $columns = null, string $orderBy = 'created_at', string $sort = 'desc'): Collection
+    public function getAll(string $orderBy = 'created_at', string $sort = 'desc', string $columns = null): Collection
     {
         return $this->model
             ->with($this->requiredRelationships)
@@ -93,7 +93,7 @@ abstract class BaseEloquentRepository
      * @param string $column column to search
      * @return Collection
      */
-    public function getCollectionByColumn(string $term, string $column = 'slug'): collection
+    public function getCollectionByColumn(string $term, string $column = 'slug'): Collection
     {
         return $this->model
             ->with($this->requiredRelationships)
@@ -115,11 +115,11 @@ abstract class BaseEloquentRepository
     /**
      * Update a record using the primary key.
      *
-     * @param int $id primary key
      * @param array $data
+     * @param int $id primary key
      * @return
      */
-    public function update(int $id, array $data)
+    public function update(array $data, int $id)
     {
         return $this->model->where($this->model->getKeyName(), $id)->update($data);
     }

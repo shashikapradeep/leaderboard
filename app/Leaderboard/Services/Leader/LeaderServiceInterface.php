@@ -7,13 +7,11 @@ interface LeaderServiceInterface
 
     public function one(int $id);
 
-    public function all($q);
+    public function all(string $orderBy='', string $sortBy='', array $columns = []);
 
-    public function search(string $searchText);
+    public function search(string $searchText, string $column);
 
     public function store(array $leaderData);
-
-    public function edit(int $id);
 
     public function update(array $data, int $id);
 
