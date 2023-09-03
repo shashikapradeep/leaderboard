@@ -29,9 +29,9 @@ class LeaderService implements LeaderServiceInterface
         return $this->leaderRepository->getById($id);
     }
 
-    public function all(string $orderBy = '', string $sortBy = '', array $columns = []): Collection
+    public function all(string $orderBy = 'id', string $sortBy = 'asc', array $columns = []): Collection
     {
-        return $this->leaderRepository->getAll();
+        return $this->leaderRepository->getAll($orderBy, $sortBy);
     }
 
     public function update(array $data, int $id)

@@ -2,8 +2,9 @@
 
 namespace Leaderboard\Controller\v1;
 
-use App\Leaderboard\Requests\Leader\LeaderOneRequest;
-use App\Leaderboard\Requests\Leader\LeaderStoreRequest;
+use Leaderboard\Requests\Leader\LeaderOneRequest;
+use Leaderboard\Requests\Leader\LeaderAllRequest;
+use Leaderboard\Requests\Leader\LeaderStoreRequest;
 use Illuminate\Http\Request;
 use Leaderboard\Controllers\BaseController;
 use Leaderboard\Services\Leader\LeaderService;
@@ -21,9 +22,14 @@ class LeaderController extends BaseController
         $this->leaderService = $leaderService;
     }
 
-    public function store(LeaderStoreRequest $leaderStoreRequest): JsonResponse
+    public function one(LeaderOneRequest $leaderOneRequest, int $id):JsonResponse
     {
-        return $this->response($this->leaderService->store($leaderStoreRequest->all()));
+        return $this->response($this->leaderService->one($id)->toArray());
+    }
+
+    public function all(LeaderAllRequest $leaderAllRequest, string $orderBy = 'id', string $sortBy = 'desc'):JsonResponse
+    {
+        return $this->response($this->leaderService->all($orderBy, $sortBy)->toArray());
     }
 
     public function search(Request $leaderSearchRequest): JsonResponse
@@ -31,16 +37,9 @@ class LeaderController extends BaseController
         return $this->response($this->leaderService->search($leaderSearchRequest->get('text'), $leaderSearchRequest->get('column'))->toArray());
     }
 
-    public function all(Request $leaderAllRequest):JsonResponse
+    public function store(LeaderStoreRequest $leaderStoreRequest): JsonResponse
     {
-        return $this->response($this->leaderService->all($leaderAllRequest->get('orderBy') ?? 'id', $leaderAllRequest->get('sortBy') ?? 'desc')->toArray());
-    }
-
-    public function one(LeaderOneRequest $leaderOneRequest):JsonResponse
-    {
-        return $this->response($this->leaderService->store($leaderOneRequest->all()));
-//        return $this->response(["hello" => "world"]);
-//        return $this->response($getOneRequest->get('id')->toArray());
+        return $this->response($this->leaderService->store($leaderStoreRequest->all()));
     }
 
     public function update(Request $leaderUpdateRequest, int $id):JsonResponse

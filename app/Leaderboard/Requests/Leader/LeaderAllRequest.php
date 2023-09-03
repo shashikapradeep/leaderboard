@@ -4,7 +4,7 @@ namespace Leaderboard\Requests\Leader;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LeaderOneRequest extends FormRequest
+class LeaderAllRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,23 +24,25 @@ class LeaderOneRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|integer|exists:leaders,id'
+            "orderBy" => 'string',
+            "sortBy"  => 'string|in:desc,asc'
         ];
     }
 
     public function all($keys = null): array
     {
         $data = parent::all();
-        $data['id'] = $this->route('id');
+        $data['orderBy'] = $this->route('orderBy');
+        $data['sortBy'] = $this->route('sortBy');
         return $data;
     }
 
     public function messages():array
     {
         return [
-            'id.required' => 'Leader Id is required to fetch a record.',
-            'id.string' => 'Leader Id should be an integer.',
-            'id.exists' => 'Invalid leader :input of :attribute.',
+            'orderBy:string' => 'Order by field should be a string.',
+            'sortBy:string' => 'Sort by field should be a string.',
+            'sortBy:in' => 'Sort by field should be either "desc" or "asc".',
         ];
     }
 }

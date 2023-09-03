@@ -22,8 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['namespace' => 'v1', 'prefix' => 'v1', 'middleware' => []], function () {
     Route::post('/leader/store', [LeaderController::class, 'store']);
     Route::put('/leader/update', [LeaderController::class, 'update']);
-    Route::get('/leader/:id', [LeaderController::class, 'one']);
-    Route::get('/leader/all/{orderBy?}/{sortBy?}', [LeaderController::class, 'all']);
+    Route::get('/leaders/{orderBy}/{sortBy}', [LeaderController::class, 'all']);
     Route::delete('/leader/delete', [LeaderController::class, 'delete']);
-    Route::get('/leader/search/:', [LeaderController::class, 'search']);
+    Route::get('/leader/search/{key}', [LeaderController::class, 'search']);
+    Route::get('/leader/{id}', [LeaderController::class, 'one']);
 });
