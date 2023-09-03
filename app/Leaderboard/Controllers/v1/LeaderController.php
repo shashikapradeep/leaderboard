@@ -8,6 +8,7 @@ use Leaderboard\Requests\Leader\LeaderAllRequest;
 use Leaderboard\Requests\Leader\LeaderStoreRequest;
 use Illuminate\Http\Request;
 use Leaderboard\Controllers\BaseController;
+use Leaderboard\Requests\Leader\LeaderUpdateRequest;
 use Leaderboard\Services\Leader\LeaderService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -43,9 +44,10 @@ class LeaderController extends BaseController
         return $this->response($this->leaderService->store($leaderStoreRequest->all())->toArray());
     }
 
-    public function update(Request $leaderUpdateRequest, int $id):JsonResponse
+    public function update(LeaderUpdateRequest $leaderUpdateRequest, int $id):JsonResponse
     {
-        return $this->response($this->leaderService->update($leaderUpdateRequest->all(), $id));
+        $this->leaderService->update($leaderUpdateRequest->all(), $id);
+        return $this->response($this->leaderService->one($id)->toArray());
     }
 
     public function delete(LeaderDeleteRequest $leaderDeleteRequest, $id):JsonResponse

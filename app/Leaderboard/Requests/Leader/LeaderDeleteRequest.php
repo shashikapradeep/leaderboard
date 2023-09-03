@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Leaderboard\Requests\Leader;
+namespace Leaderboard\Requests\Leader;
 
 use Illuminate\Foundation\Http\FormRequest;
 
