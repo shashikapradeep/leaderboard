@@ -106,8 +106,9 @@ trait HttpResponse
      *
      * @return JsonResponse
      */
-    public function sendErrorResponse(mixed $data = null, string $message = 'ERROR', int $statusCode = 400, array $headers = [], string $statusText = null, string $debug = null): JsonResponse
+    public function sendErrorResponse(mixed $data = null, string $message = 'ERROR', int $statusCode = 400, string $statusText = null, array $headers = [], string|array $debug = null): JsonResponse
     {
+
         $this->setStatusCode($statusCode, $statusText);
         $this->addHttpHeaders($headers);
 
@@ -169,7 +170,7 @@ trait HttpResponse
             throw new InvalidArgumentException(sprintf('The HTTP status code "%s" is not valid.', $statusCode));
         }
 
-        $this->statusText = false === $text ? '' : (null === $text ? self::$statusTexts[$this->statusCode] : $text);
+        $this->statusText = ($text) ?: (null === $text ? self::$statusTexts[$this->statusCode] : $text);
     }
 
     /**
