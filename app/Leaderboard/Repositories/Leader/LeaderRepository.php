@@ -1,4 +1,5 @@
 <?php
+
 namespace Leaderboard\Repositories\Leader;
 
 use Leaderboard\Models\Leader;
@@ -16,6 +17,13 @@ class LeaderRepository extends BaseEloquentRepository implements LeaderRepositor
     {
         $this->model = $leader;
         $this->leader = $leader;
+    }
+
+    public function search($text, $column = null)
+    {
+        /**
+         * TODO: global search should be implemented here
+         */
     }
 
 }
