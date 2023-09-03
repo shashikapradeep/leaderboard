@@ -5,6 +5,7 @@ namespace Leaderboard\Controller\v1;
 use Leaderboard\Requests\Leader\LeaderDeleteRequest;
 use Leaderboard\Requests\Leader\LeaderOneRequest;
 use Leaderboard\Requests\Leader\LeaderAllRequest;
+use Leaderboard\Requests\Leader\LeaderSearchRequest;
 use Leaderboard\Requests\Leader\LeaderStoreRequest;
 use Illuminate\Http\Request;
 use Leaderboard\Controllers\BaseController;
@@ -46,10 +47,12 @@ class LeaderController extends BaseController
     }
 
     /**
-     * @param Request $leaderSearchRequest
+     * @param LeaderSearchRequest $leaderSearchRequest
+     * @param string $text
+     * @param string|null $column
      * @return JsonResponse
      */
-    public function search(Request $leaderSearchRequest, string $text, string $column = null): JsonResponse
+    public function search(LeaderSearchRequest $leaderSearchRequest, string $text, string $column = null): JsonResponse
     {
         return $this->response($this->leaderService->search($text, $column)->toArray());
     }
