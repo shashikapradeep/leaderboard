@@ -10,10 +10,11 @@ class Leader extends AbstractModel
     use SoftDeletes, HasFactory;
 
     protected $appends = ['points_text'];
+    protected $fillable = ['name', 'age', 'points', 'address'];
 
-    public function getPointsTextAttribute():string
+    public function getPointsTextAttribute(): string
     {
-        return $this->attributes['points'].' Points';
+        return $this->attributes['points'] . ' Points';
     }
 
 }

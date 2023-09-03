@@ -107,9 +107,9 @@ abstract class BaseEloquentRepository
      *
      * @return mixed
      */
-    public function create()
+    public function create(array $data):Model
     {
-        return $this->model->create();
+        return $this->model->create($data);
     }
 
     /**

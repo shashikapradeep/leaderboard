@@ -18,10 +18,9 @@ class LeaderService implements LeaderServiceInterface
         $this->leaderRepository = $leaderRepository;
     }
 
-    public function store(array $leaderData): array
+    public function store(array $leaderData): Model
     {
-        return $leaderData;
-        return $this->leaderRepository->store($leaderData);
+        return $this->leaderRepository->create($leaderData);
     }
 
     public function one(int $id): Model
