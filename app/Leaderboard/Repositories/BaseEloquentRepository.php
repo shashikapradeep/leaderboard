@@ -97,7 +97,7 @@ abstract class BaseEloquentRepository
     {
         return $this->model
             ->with($this->requiredRelationships)
-            ->where($column, '=', $term)
+            ->where($column, 'Like', '%'.$term.'%')
             ->get();
     }
 

@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['namespace' => 'v1', 'prefix' => 'v1', 'middleware' => []], function () {
     Route::post('/leader/store', [LeaderController::class, 'store']);
     Route::put('/leader/update/{id}', [LeaderController::class, 'update']);
-    Route::get('/leader/search/{key}', [LeaderController::class, 'search']);
+    Route::get('/leader/search/{text}/{column?}', [LeaderController::class, 'search']);
     Route::get('/leaders/{orderBy}/{sortBy}', [LeaderController::class, 'all']);
     Route::get('/leader/{id}', [LeaderController::class, 'one']);
     Route::delete('/leader/{id}', [LeaderController::class, 'delete']);
