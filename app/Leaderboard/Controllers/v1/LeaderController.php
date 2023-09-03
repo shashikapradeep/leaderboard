@@ -2,6 +2,7 @@
 
 namespace Leaderboard\Controller\v1;
 
+use App\Leaderboard\Requests\Leader\LeaderDeleteRequest;
 use Leaderboard\Requests\Leader\LeaderOneRequest;
 use Leaderboard\Requests\Leader\LeaderAllRequest;
 use Leaderboard\Requests\Leader\LeaderStoreRequest;
@@ -47,8 +48,8 @@ class LeaderController extends BaseController
         return $this->response($this->leaderService->update($leaderUpdateRequest->all(), $id));
     }
 
-    public function delete():JsonResponse
+    public function delete(LeaderDeleteRequest $leaderDeleteRequest, $id):JsonResponse
     {
-        return $this->response();
+        return $this->response(["status" => $this->leaderService->delete($id)]);
     }
 }
