@@ -39,8 +39,8 @@ class LeaderDeleteRequest extends FormRequest
     {
         return [
             'id.required' => 'Leader Id is required to delete a record.',
-            'id.string' => 'Leader Id should be an integer.',
-            'id.exists' => 'Invalid leader :input of :attribute. No record.',
+            'id.integer' => 'Leader Id should be an integer.',
+            'id.exists' => 'Invalid leader :input of :attribute. No record found.',
         ];
     }
 }
