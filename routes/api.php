@@ -23,7 +23,7 @@ Route::group(['namespace' => 'v1', 'prefix' => 'v1', 'middleware' => []], functi
     Route::post('/leader/store', [LeaderController::class, 'store']);
     Route::put('/leader/update', [LeaderController::class, 'update']);
     Route::get('/leader/:id', [LeaderController::class, 'one']);
-    Route::get('/leader/all', [LeaderController::class, 'all']);
+    Route::get('/leader/all/{orderBy?}/{sortBy?}', [LeaderController::class, 'all']);
     Route::delete('/leader/delete', [LeaderController::class, 'delete']);
     Route::get('/leader/search/:', [LeaderController::class, 'search']);
 });

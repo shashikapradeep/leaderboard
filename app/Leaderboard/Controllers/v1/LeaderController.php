@@ -2,6 +2,8 @@
 
 namespace Leaderboard\Controller\v1;
 
+use App\Leaderboard\Requests\Leader\LeaderOneRequest;
+use App\Leaderboard\Requests\Leader\LeaderStoreRequest;
 use Illuminate\Http\Request;
 use Leaderboard\Controllers\BaseController;
 use Leaderboard\Services\Leader\LeaderService;
@@ -19,30 +21,31 @@ class LeaderController extends BaseController
         $this->leaderService = $leaderService;
     }
 
-    public function store(Request $leaderData): JsonResponse
+    public function store(LeaderStoreRequest $leaderStoreRequest): JsonResponse
     {
-        return $this->response($this->leaderService->store($leaderData->all())->toArray());
+        return $this->response($this->leaderService->store($leaderStoreRequest->all()));
     }
 
-    public function search(Request $searchRequest): JsonResponse
+    public function search(Request $leaderSearchRequest): JsonResponse
     {
-        return $this->response($this->leaderService->search($searchRequest->get('text'), $searchRequest->get('column'))->toArray());
+        return $this->response($this->leaderService->search($leaderSearchRequest->get('text'), $leaderSearchRequest->get('column'))->toArray());
     }
 
-    public function all(Request $getAllRequest):JsonResponse
+    public function all(Request $leaderAllRequest):JsonResponse
     {
-        return $this->response($this->leaderService->all($getAllRequest->get('orderBy'), $getAllRequest->get('sortBy'))->toArray());
+        return $this->response($this->leaderService->all($leaderAllRequest->get('orderBy') ?? 'id', $leaderAllRequest->get('sortBy') ?? 'desc')->toArray());
     }
 
-    public function one(Request $getOneRequest):JsonResponse
+    public function one(LeaderOneRequest $leaderOneRequest):JsonResponse
     {
-        return $this->response(["hello" => "world"]);
+        return $this->response($this->leaderService->store($leaderOneRequest->all()));
+//        return $this->response(["hello" => "world"]);
 //        return $this->response($getOneRequest->get('id')->toArray());
     }
 
-    public function update(Request $updateRequest, int $id):JsonResponse
+    public function update(Request $leaderUpdateRequest, int $id):JsonResponse
     {
-        return $this->response($this->leaderService->update($updateRequest->all(), $id));
+        return $this->response($this->leaderService->update($leaderUpdateRequest->all(), $id));
     }
 
     public function delete():JsonResponse

@@ -1,4 +1,5 @@
 <?php
+
 namespace Leaderboard\Services\Leader;
 
 use Leaderboard\Repositories\Leader\LeaderRepository;
@@ -17,8 +18,9 @@ class LeaderService implements LeaderServiceInterface
         $this->leaderRepository = $leaderRepository;
     }
 
-    public function store(array $leaderData):Model
+    public function store(array $leaderData): array
     {
+        return $leaderData;
         return $this->leaderRepository->store($leaderData);
     }
 
@@ -27,7 +29,7 @@ class LeaderService implements LeaderServiceInterface
         return $this->leaderRepository->getById($id);
     }
 
-    public function all(string $orderBy='', string $sortBy='', array $columns = []): Collection
+    public function all(string $orderBy = '', string $sortBy = '', array $columns = []): Collection
     {
         return $this->leaderRepository->getAll();
     }
@@ -42,7 +44,7 @@ class LeaderService implements LeaderServiceInterface
         return $this->leaderRepository->delete($id);
     }
 
-    public function search(string $searchText, string $column):Collection
+    public function search(string $searchText, string $column): Collection
     {
         return $this->leaderRepository->getCollectionByColumn($searchText, $column);
     }

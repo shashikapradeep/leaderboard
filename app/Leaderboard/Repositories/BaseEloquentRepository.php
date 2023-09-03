@@ -34,7 +34,7 @@ abstract class BaseEloquentRepository
      * @param string $sort sort direction
      * @return Collection
      */
-    public function getAll(string $orderBy = 'created_at', string $sort = 'desc', string $columns = null): Collection
+    public function getAll(string $orderBy = 'created_at', string $sort = 'desc', string $columns = '*'): Collection
     {
         return $this->model
             ->with($this->requiredRelationships)
