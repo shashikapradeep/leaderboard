@@ -39,7 +39,7 @@ class LeaderController extends BaseController
 
     public function store(LeaderStoreRequest $leaderStoreRequest): JsonResponse
     {
-        return $this->response($this->leaderService->store($leaderStoreRequest->all()));
+        return $this->response($this->leaderService->store($leaderStoreRequest->all())->toArray());
     }
 
     public function update(Request $leaderUpdateRequest, int $id):JsonResponse

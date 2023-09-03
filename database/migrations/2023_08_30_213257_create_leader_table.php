@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->unsignedTinyInteger('age');
-            $table->smallInteger('points');
-            $table->string('address', 255);
+            $table->smallInteger('points')->default(0);
+            $table->string('address', 255)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

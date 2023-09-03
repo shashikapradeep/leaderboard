@@ -14,7 +14,7 @@ class Leader extends AbstractModel
 
     public function getPointsTextAttribute(): string
     {
-        return $this->attributes['points'] . ' Points';
+        return $this->attributes['points'] ?? 0 . ' Points';
     }
 
 }
