@@ -24,6 +24,7 @@ Route::group(['namespace' => 'v1', 'prefix' => 'v1', 'middleware' => []], functi
     Route::put('/leader/update/{id}', [LeaderController::class, 'update']);
     Route::get('/leader/search/{text}/{column?}', [LeaderController::class, 'search']);
     Route::get('/leaders/{orderBy}/{sortBy}', [LeaderController::class, 'all']);
+    Route::get('/leader/update_score/{id}/{context}', [LeaderController::class, 'updateScore']);
     Route::get('/leader/{id}', [LeaderController::class, 'one']);
     Route::delete('/leader/{id}', [LeaderController::class, 'delete']);
 });

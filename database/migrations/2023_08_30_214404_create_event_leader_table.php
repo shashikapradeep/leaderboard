@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('event_leader', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('event_id');
-            $table->unsignedBigInteger('leader_id');
+            $table->increments('id')->unsigned();
+            $table->unsignedInteger('event_id');
+            $table->unsignedInteger('leader_id');
             $table->timestamps();
 
             $table->foreign('event_id')->references('id')->on('events');

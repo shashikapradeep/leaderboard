@@ -1,4 +1,5 @@
 <?php
+
 namespace Leaderboard\Services\Leader;
 
 use Leaderboard\Repositories\Leader\LeaderRepository;
@@ -54,6 +55,24 @@ class LeaderService implements LeaderServiceInterface
     public function update(array $data, int $id)
     {
         return $this->leaderRepository->update($data, $id);
+    }
+
+    public function updateScore(int $id, string $context): array
+    {
+        $leader = $this->leaderRepository->getById($id);
+        switch($context){
+            case INCREASE_LEADER_SCORE:
+                $leader->points = ++$leader->points;
+                break;
+            case DECREASE_LEADER_SCORE:
+                $leader->points = --$leader->points;
+                break;
+            case RESET_LEADER_SCORE:
+                $leader->points = 0;
+                break;
+        }
+        $leader->save();
+        return $leader->toArray();
     }
 
     /**

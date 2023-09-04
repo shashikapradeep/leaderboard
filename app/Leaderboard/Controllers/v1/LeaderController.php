@@ -10,6 +10,7 @@ use Leaderboard\Requests\Leader\LeaderStoreRequest;
 use Illuminate\Http\Request;
 use Leaderboard\Controllers\BaseController;
 use Leaderboard\Requests\Leader\LeaderUpdateRequest;
+use Leaderboard\Requests\Leader\LeaderUpdateScoreRequest;
 use Leaderboard\Services\Leader\LeaderService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -77,6 +78,11 @@ class LeaderController extends BaseController
         return $this->response($this->leaderService->one($id)->toArray());
     }
 
+    public function updateScore(LeaderUpdateScoreRequest $leaderUpdateScoreRequest, int $id, string $context): JsonResponse
+    {
+        $this->leaderService->updateScore($id, $context);
+        return $this->response($this->leaderService->one($id)->toArray());
+    }
     /**
      * @param LeaderDeleteRequest $leaderDeleteRequest
      * @param $id

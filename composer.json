@@ -26,7 +26,10 @@
             "Leaderboard\\": "app/Leaderboard",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Leaderboard/Constants.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

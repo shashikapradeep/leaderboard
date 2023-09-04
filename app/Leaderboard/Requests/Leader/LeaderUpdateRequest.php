@@ -24,7 +24,7 @@ class LeaderUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|integer',
+            'id' => 'required|integer|exists:leaders,id',
             'name' => 'required|max:255',
             'age' => 'required|numeric|min:0|max:120',
             'points' => 'numeric|min:0|max:2000',

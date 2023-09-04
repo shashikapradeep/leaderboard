@@ -62,9 +62,9 @@ abstract class BaseEloquentRepository
      * Get item by its id
      *
      * @param integer $id
-     * @return Model
+     * @return Model|null
      */
-    public function getById(int $id): Model
+    public function getById(int $id): Model|null
     {
         return $this->model
             ->with($this->requiredRelationships)
@@ -76,9 +76,9 @@ abstract class BaseEloquentRepository
      *
      * @param mixed $term search term
      * @param string $column column to search
-     * @return Model
+     * @return Model|null
      */
-    public function getItemByColumn(string $term, string $column = 'slug'): Model
+    public function getItemByColumn(string $term, string $column = 'slug'): Model|null
     {
         return $this->model
             ->with($this->requiredRelationships)
@@ -97,7 +97,7 @@ abstract class BaseEloquentRepository
     {
         return $this->model
             ->with($this->requiredRelationships)
-            ->where($column, 'Like', '%'.$term.'%')
+            ->where($column, 'Like', '%' . $term . '%')
             ->get();
     }
 
@@ -107,7 +107,7 @@ abstract class BaseEloquentRepository
      *
      * @return mixed
      */
-    public function create(array $data):Model
+    public function create(array $data): Model
     {
         return $this->model->create($data);
     }
