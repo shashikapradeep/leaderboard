@@ -1,6 +1,6 @@
 <?php
 
-namespace Leaderboard\Controller\v1;
+namespace Leaderboard\Controllers\v1;
 
 use Leaderboard\Requests\Leader\LeaderDeleteRequest;
 use Leaderboard\Requests\Leader\LeaderOneRequest;
