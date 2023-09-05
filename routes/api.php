@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Leaderboard\Controller\v1\LeaderController;
+use Leaderboard\Controllers\v1\LeaderController;
 
 Route::group(['namespace' => 'v1', 'prefix' => 'v1', 'middleware' => []], function () {
     Route::post('/leader/store', [LeaderController::class, 'store'])->name('api.leader.store');
