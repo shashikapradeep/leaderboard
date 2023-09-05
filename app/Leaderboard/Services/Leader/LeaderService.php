@@ -31,7 +31,7 @@ class LeaderService implements LeaderServiceInterface
      * @param int $id
      * @return Model
      */
-    public function one(int $id): Model
+    public function one(int $id): Model | null
     {
         return $this->leaderRepository->getById($id);
     }

@@ -2,9 +2,9 @@
 
 namespace Leaderboard\Requests\Leader;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Leaderboard\Requests\BaseRequest;
 
-class LeaderDeleteRequest extends FormRequest
+class LeaderDeleteRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.

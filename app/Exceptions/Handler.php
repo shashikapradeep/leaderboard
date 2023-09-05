@@ -6,6 +6,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Http\Response;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 use Leaderboard\Exceptions\AlreadyExistException;
@@ -31,7 +32,13 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    public function render($request, Throwable $exception): JsonResponse
+    /**
+     * @param $request
+     * @param Throwable $exception
+     * @return JsonResponse|Response
+     * @throws Throwable
+     */
+    public function render($request, Throwable $exception): JsonResponse | Response
     {
         #sentry
         if (app()->bound('sentry') && $this->shouldReport($exception)) {

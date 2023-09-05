@@ -33,7 +33,8 @@ class LeaderController extends BaseController
      */
     public function one(LeaderOneRequest $leaderOneRequest, int $id): JsonResponse
     {
-        return $this->response($this->leaderService->one($id)->toArray());
+        $leader = $this->leaderService->one($id);
+        return $this->response($leader ? $leader->toArray() : []);
     }
 
     /**
