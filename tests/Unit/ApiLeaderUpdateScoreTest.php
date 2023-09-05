@@ -15,6 +15,9 @@ class ApiLeaderUpdateScoreTest extends TestCase
     public function test_is_json_response_for_valid_request(): void
     {
         $response = $this->get(route('api.leader.update.score', ['id' => 1, 'context' => INCREASE_LEADER_SCORE]));
+        $this->assertDatabaseHas('leaders', [
+            'points' => 21
+        ]);
         $response->assertJsonFragment($response->json());
     }
 
@@ -27,6 +30,9 @@ class ApiLeaderUpdateScoreTest extends TestCase
     public function test_is_200_for_valid_request(): void
     {
         $response = $this->get(route('api.leader.update.score', ['id' => 1, 'context' => DECREASE_LEADER_SCORE]));
+        $this->assertDatabaseHas('leaders', [
+            'points' => 20
+        ]);
         $response->assertStatus(200);
     }
 
@@ -39,6 +45,9 @@ class ApiLeaderUpdateScoreTest extends TestCase
     public function test_response_is_correct(): void
     {
         $response = $this->get(route('api.leader.update.score', ['id' => 1, 'context' => DECREASE_LEADER_SCORE]));
+        $this->assertDatabaseHas('leaders', [
+            'points' => 19
+        ]);
         $response->assertSee('name');
     }
 
