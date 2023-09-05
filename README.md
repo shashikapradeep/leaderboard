@@ -18,6 +18,10 @@ Local Deployment Steps:
 8. setup nginx conf file with url for the project
 9. update hosts file with project url
 10. Try url with the browser
-    i. If permission denied error occurs change file to correct owner.
-    ii.  
-11. 
+     i. If permission denied error occurs change file to correct owner.
+
+    ii. Check availability of all the routes with
+       > php artisal route:list 
+
+    iii. If file not found error received try
+       > composer dumpautoload
