@@ -2,10 +2,15 @@
 
 namespace Tests\Unit;
 
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class ApiLeaderUpdateTest extends TestCase
 {
+    public function test_reset_databases(){
+        Init::resetDatabases();
+        $this->assertDatabaseCount('leaders', 2);
+    }
 
     public function test_is_json_response_for_valid_request(): void
     {

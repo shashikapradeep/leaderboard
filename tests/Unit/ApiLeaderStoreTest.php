@@ -2,10 +2,15 @@
 
 namespace Tests\Unit;
 
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class ApiLeaderStoreTest extends TestCase
 {
+    public function test_reset_databases(){
+        Init::resetDatabases();
+        $this->assertDatabaseCount('leaders', 2);
+    }
 
     public function test_is_json_response_for_valid_request(): void
     {
@@ -15,6 +20,13 @@ class ApiLeaderStoreTest extends TestCase
             'points' => 50,
             'address' => 'Canada'
         ]));
+        $this->assertDatabaseHas('leaders', [
+            'name' => 'Martin',
+            'age' => 20,
+            'points' => 50,
+            'address' => 'Canada'
+        ]);
+        $this->assertDatabaseCount('leaders', 3);
         $response->assertJsonFragment($response->json());
     }
 
