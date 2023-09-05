@@ -24,7 +24,7 @@ class LeaderOneRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|integer|exists:leaders,id'
+            'id' => 'required|integer'
         ];
     }
 
